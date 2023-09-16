@@ -20,4 +20,34 @@ If you clone this repository, it's set up to ignore a `project` or `projects` di
 ];
 ```
 
-If that code is stored in a file called `learn.t`, then you could then compile that with: `inform6 learn.t`.
+If that code is stored in a file called `learn.t`, then you could then compile that with:
+
+`inform6 learn.t`
+
+Let's say that you have a program that uses the Inform 6 library. Consider this:
+
+```inform6
+Constant Story "RUINS";
+Constant Headline "^An Interactive Example^";
+
+Include "Parser";
+Include "VerbLib";
+
+[ Initialise;
+  "^^^A discovery looms before you ...";
+];
+
+Include "Grammar";
+```
+
+If that code is stored in a file called `ruins.t`, then you could compile that with:
+
+`inform6 ruins.inf +include_path=../lib/`
+
+With Inform 6, you can also provide what are called "ICL commands" within the source code of your program. If you didn't want to specify the include path at the command line, as above, you could include this line in your source at the top of the file:
+
+```inform6
+!% +include_path=../lib
+```
+
+Keep in mind that if you place your project in a subdirectory within your projects directory, you will have to adjust the relative paths accordingly. The idea, however, is that everything is done relative to the Inform 6 playground structure.
