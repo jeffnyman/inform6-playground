@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)http://inform-fiction.org/manual/I6-Addendum.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Inform 6 Reference Addendum</title>
+
+<style type="text/css">
+body {
+  font-family: 'Source Serif Pro', Georgia, serif;
+  margin-left: 2em;
+  margin-right: 2em;
+}
+h1, h2, h3, h4, h5 {
+  font-family: 'Source Sans Pro', 'Helvetica Neue', 'Helvetica', sans-serif;
+}
+h4, h5 {
+  font-size: 1.0em;
+  margin-bottom: 1.0em;
+}
+.VersionHeader, .AuthorHeader, .DateHeader {
+  font-style: italic;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 2em;
+}
+code {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.9em;
+}
+pre {
+  padding-left: 2em;
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+  white-space: pre-wrap;
+}
+.DefFun {
+  background: #FEB;
+}
+.CommentPara {
+  margin-left: 2em;
+}
+.Comment {
+  color: #0A0;
+  font-style: italic;
+}
+.Comment em {
+  font-style: normal;
+}
+.CommentCode {
+  white-space: pre-wrap;
+}
+a {
+  color: #00C;
+}
+.Comment a {
+  color: #08B;
+}
+ul {
+  list-style: none;
+  padding-left: 1.8em;
+  text-indent: -0.8em;
+}
+ul li:before {
+  content: "\00B7\00A0\00A0";
+}
+.toc {
+  font-family: "Source Sans Pro", "Helvetica Neue", "Helvetica", serif;
+  margin-left: 1em;
+}
+.toc ul {
+  padding-left: 1em;
+  text-indent: 0px;
+}
+.toc li:before {
+  content: none;
+}
+
+@font-face {
+  font-family: "Source Serif Pro";
+  font-weight: normal;
+  font-style: normal;
+  src: url("font/SourceSerifPro-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Source Serif Pro";
+  font-weight: bold;
+  font-style: normal;
+  src: url("font/SourceSerifPro-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Source Sans Pro";
+  font-weight: normal;
+  font-style: normal;
+  src: url("font/SourceSansPro-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Source Sans Pro";
+  font-weight: bold;
+  font-style: normal;
+  src: url("font/SourceSansPro-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Source Code Pro";
+  font-weight: normal;
+  font-style: normal;
+  src: url("font/SourceCodePro-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Source Code Pro";
+  font-weight: bold;
+  font-style: normal;
+  src: url("font/SourceCodePro-Bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Source Code Pro";
+  font-weight: normal;
+  font-style: italic;
+  src: url("font/SourceCodePro-Italic.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Source Code Pro";
+  font-weight: bold;
+  font-style: italic;
+  src: url("font/SourceCodePro-BoldItalic.ttf") format("truetype");
+}
+
+</style>
+
+</head>
+<body>
+<h1 class="Title" id="inform-6-reference-addendum">Inform 6 Reference Addendum</h1>
+<p class="VersionHeader">Language and compiler changes: releases 6.30 to 6.35 (in development)</p>
+<p class="AuthorHeader">Maintained by IFTF: <code>&lt;specs@ifarchive.org&gt;</code></p>
+<p class="DateHeader">(Last update: Nov 18, 2020)</p>
+<p>Copyright 2020 by the Interactive Fiction Technology Foundation. This document is licenced under a <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
+<p>Graham Nelson's <a href="https://ifarchive.org/indexes/if-archive/infocom/compilers/inform6/">Inform 6</a> is a system for creating adventure games, and <em><a href="https://www.inform-fiction.org/manual/html/contents.html">The Inform Designer's Manual</a></em> is the book to read about it.</p>
+<p>The fourth edition of that manual, published in 2001, began with that assertion. It's still true -- although these days we have to specify that it's about Inform <em>6</em>. (<a href="http://inform7.com/">Inform 7</a> is a more modern system, quite different, with its own manual called <em><a href="http://inform7.com/book/WI_1_1.html">Writing With Inform</a></em>.) </p>
+<p>Inform 6 has remained broadly unchanged in the twenty years since the DM4 was published. While some authors continue to use I6 directly, its primary use is as an intermediate stage for the Inform 7 compiler. Stability and reliability have therefore been the watchwords of the I6 maintainers.</p>
+<p>However, the language has not remained completely static. Most notably, the compiler now supports the Glulx VM as well as the original Z-machine. This required some additions to both the language and the compiler. Other corners of the system have been polished and rearranged, with the aim of making Inform a more flexible tool for both its target platforms.</p>
+<p>As a result, the DM4 is now a bit out of date. This document is meant to fill in the gaps for the Inform 6 user of today.</p>
+<hr>
+<div class="toc">
+<ul>
+<li><a href="http://inform-fiction.org/manual/I6-Addendum.html#inform-6-reference-addendum">Inform 6 Reference Addendum</a><ul>
+<li><a href="http://inform-fiction.org/manual/I6-Addendum.html#language-versus-library">Language versus library</a></li>
+</ul>
+</li>
+<li><a href="http://inform-fiction.org/manual/I6-Addendum.html#compiler-options-and-settings">Compiler options and settings</a><ul>
+<li><a href="http://inform-fiction.org/manual/I6-Addendum.html#supplying-options">Supplying options</a><ul>
+<li><a href="http://inform-fiction.org/manual/I6-Addendum.html#switch-options-dash">Switch options (dash)</a></li>
+<li><a href="http://inform-fiction.org/manual/I6-Addendum.html#path-options-plus">Path options (plus)</a></li>
+<li><a href="http://inform-fiction.org/manual/I6-Addendum.html#compiler-settings-dollar">Compiler settings (dollar)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="http://inform-fiction.org/manual/I6-Addendum.html#language-changes">Language changes</a><ul>
+<li><a href="http://inform-fiction.org/manual/I6-Addendum.html#directives">Directives</a></li>
+<li><a href="http://inform-fiction.org/manual/I6-Addendum.html#statements">Statements</a></li>
+<li><a href="http://inform-fiction.org/manual/I6-Addendum.html#operators">Operators</a></li>
+<li><a href="http://inform-fiction.org/manual/I6-Addendum.html#class-behavior">Class behavior</a></li>
+<li><a href="http://inform-fiction.org/manual/I6-Addendum.html#glulx-support">Glulx support</a><ul>
+<li><a href="http://inform-fiction.org/manual/I6-Addendum.html#language-features-supported-only-in-glulx">Language features supported only in Glulx</a></li>
+<li><a href="http://inform-fiction.org/manual/I6-Addendum.html#language-features-not-supported-in-glulx">Language features not supported in Glulx</a></li>
+</ul>
+</li>
+<li><a href="http://inform-fiction.org/manual/I6-Addendum.html#z-machine-v34-limitations">Z-machine V3/4 limitations</a></li>
+</ul>
+</li>
+<li><a href="http://inform-fiction.org/manual/I6-Addendum.html#bugs">Bugs</a></li>
+</ul>
+</div>
+<hr>
+<h2 id="language-versus-library">Language versus library</h2>
+<p>This addendum covers updates to the Inform 6 language and compiler. A few errata are also included.</p>
+<p>The changes described here are mostly to DM4 chapters 1-7, 36, and 38 and up. (Section references such as "§1" refer to <a href="https://www.inform-fiction.org/manual/html/contents.html">DM4 chapters</a>.) The intermediate chapters (the bulk of the DM4!) concern the Inform 6 library, which is <em>not</em> covered by this document.</p>
+<p>The Inform library described by the DM4 is version <a href="https://ifarchive.org/if-archive/infocom/compilers/inform6/library/old/inform_library69.zip">6/9</a>, which was released along with Inform 6.21 in April of 1999. The library was subsequently updated to <a href="https://ifarchive.org/if-archive/infocom/compilers/inform6/library/old/inform_library610.zip">6/10</a> (a bug-fix release) and then <a href="https://ifarchive.org/if-archive/infocom/compilers/inform6/library/old/inform_library611.zip">6/11</a> (Glulx support and some additional features) before the author shifted his focus to <a href="http://inform7.com/">Inform 7</a> development.</p>
+<p>The Inform library is now a <a href="https://gitlab.com/DavidGriffith/inform6lib">separate project managed by David Griffith</a>. Updates can be found on the <a href="https://gitlab.com/DavidGriffith/inform6lib">project page</a>.</p>
+<p>The Inform 6 compiler can be used with older versions of the Inform library, back through the <a href="https://ifarchive.org/indexes/if-archive/infocom/compilers/inform5/library/">Inform 5 libraries</a>. There also exist a number of alternative Inform libraries, such as <a href="https://github.com/ByteProject/Metrocenter84/tree/master/metro84">metro84</a> and <a href="https://github.com/johanberntsson/PunyInform">PunyInform</a> (supporting very old computers) and <a href="https://ifarchive.org/if-archive/infocom/compilers/inform6/library/contributions/platypus.zip">Platypus</a> (a redesigned library). The Inform 6 compiler should be usable with all of them.</p>
+<h1 id="compiler-options-and-settings">Compiler options and settings</h1>
+<p>The Inform compiler has many options which control its compilation behavior. These options come in three styles, and there are three ways to supply them.</p>
+<h2 id="supplying-options">Supplying options</h2>
+<p>All options can be supplied to the compiler in three ways (§39):</p>
+<ul>
+<li>As a command-line argument</li>
+<li>In a separate file, specified with <code>(file.icl)</code> or <code>--config file.icl</code></li>
+<li>At the head of the first source file, in a comment beginning with <code>!%</code></li>
+</ul>
+<p>The third method is new since the DM4. It allows you to store your game's compilation options in the same file as its source code.</p>
+<p>For example, this source file will be compiled in Glulx format, searching the <code>i6lib</code> directory for include files, raising the maximum number of verbs, and displaying compilation statistics:</p>
+<pre><code>!% -G
+!% -s
+!% +include_path=i6lib
+!% $MAX_VERBS=255
+
+Include "Parser";
+Include "VerbLib";
+
+[ Initialise;
+  location = Kitchen;
+];
+
+Object Kitchen "Kitchen"
+  with description "It's the kitchen.",
+  has light;
+
+Include "Grammar";
+</code></pre>
+<p>The options specified with <code>!%</code> must be at the <em>start</em> of the source file, with no blank lines or other comments before or between them.</p>
+<p>Note that this section of the file is parsed before the source encoding is set. (Indeed, this section could specify the source encoding!) Therefore, options in this section must be plain ASCII.</p>
+<p><code>!%</code> options take precedence over command-line options. Command-line options are read in order; later options (including <code>(file.icl)</code> inclusions) take precedence over earlier ones.</p>
+<p class="CommentPara"><span class="Comment">[It would be better if command-line options took precedence over <code>!%</code> options. This would allow one-off changes while recompiling existing source code. This change may be considered in the future.]</span></p>
+<h3 id="switch-options-dash">Switch options (dash)</h3>
+<p>Classic options begin with a dash -- the traditional style of command-line tools. For example, the <code>-h</code> option (help) shows a page of output documenting how to run the compiler. <code>-h2</code> will show a page listing all options that begin with a dash (§Table3).</p>
+<p><em>New since the DM4:</em></p>
+<p><code>-B</code>: In Z-code versions 6 and 7 (only), use different offset values for the packed addresses of routines and strings. This allows the game file to contain more executable code. (The default is <code>-~B</code>, where the routine and string segments use the same offset value.)</p>
+<p><code>-Cu</code>: Treat the source files as being in UTF-8 (Unicode) encoding.</p>
+<p class="CommentPara"><span class="Comment">[Older options <code>-C1</code>, <code>-C2</code>, etc., are documented in the DM4 (§36); they treated the source files as being in one of the Latin-N encodings. <code>-Cu</code> is a new extension.]</span></p>
+<p class="CommentPara"><span class="Comment">[When <code>-Cu</code> is used, the compiler does not add any characters to the Z-machine's "cheap" alphabet table. You can use the <code>Zcharacter</code> directive to add selected Unicode characters; see §36.]</span></p>
+<p><code>-G</code>: Compile to Glulx format rather than Z-machine. The default output file will be given an <code>.ulx</code> extension.</p>
+<p><code>-G -vX.Y.Z</code>: In Glulx, specify the VM version number to note in the generated game file. For example, <code>-G -v3.1.0</code> would generate a game file that specifies VM spec 3.1.0.</p>
+<p class="CommentPara"><span class="Comment">[Normally the compiler works out the earliest version number compatible with the features used by your game. You can use this option to specify a later version.]</span></p>
+<p><code>-H</code>: In Glulx format, use Huffman encoding to compress strings. This is the default; to use uncompressed text, use <code>-~H</code>.</p>
+<p><code>-k</code>: Output debugging information to a file <code>gameinfo.dbg</code>. This switch is documented in the DM4 (§7), but the output format has changed. It is now an extremely verbose XML format which describes every facet of the compiled game file.</p>
+<p><code>-W</code>: Sets the number of words in the Z-code header extension table (Z-spec 1.0). The default is <code>-W3</code>. The <code>$ZCODE_HEADER_EXT_WORDS</code> setting does the same thing.</p>
+<p><code>-V</code>: Display the compiler version and exit with no further action.</p>
+<h3 id="path-options-plus">Path options (plus)</h3>
+<p>Options beginning with a plus set paths used by the compiler (§39). For example, <code>+DIRNAME</code> or <code>+include_path=DIRNAME</code> set the directory which is searched for include files.</p>
+<p>You can also give a comma-separated list of paths: <code>+include_path=DIR1,DIR2,DIR3</code></p>
+<p><em>New since the DM4:</em></p>
+<p>A double plus sign adds a new path or paths to an existing list. For example, <code>++include_path=DIRNAME</code> will add DIRNAME to the paths which are searched for include files. The newly-added paths will be searched first.</p>
+<p>On the command line (but not in ICL files or comments), path options can be also specified in Unix style. (This is new in 6.35.)</p>
+<pre><code>--path PATH=dir
+--addpath PATH=dir
+</code></pre>
+<h3 id="compiler-settings-dollar">Compiler settings (dollar)</h3>
+<p>These were referred to as "memory settings" in the DM4 (§39). However, they now encompass a wide range of compiler behavior.</p>
+<p>The <code>$LIST</code> setting will show a page of output listing all dollar-sign settings for Z-machine games. To see all settings for Glulx games, give the <code>-G</code> argument before <code>$LIST</code>.</p>
+<p class="CommentPara"><span class="Comment"><span>[</span><span>If you supply a dollar-sign setting as a command-line option on MacOS or Unix, remember that the shell treats the dollar sign as a special character. You must escape the dollar sign so that it reaches the compiler:
+</span><br>
+<code class="CommentCode">    inform \$MAX_VERBS=255 source.inf
+</code><span>If you supply such a setting in a source file, using the <code>!%</code> format, you should <em>not</em> use the backslash.</span><span>]</span></span></p>
+<p><em>New since the DM4:</em></p>
+<p>Settings marked "internal memory setting" do not affect the compiled game file. They just tell the Inform compiler to pre-allocate more work space, allowing it to compile a larger game. If you see a compile error which mentions one of these, set it higher and try again.</p>
+<p>All other settings <em>do</em> affect the compiled game file in some way. Most often they modify the way that game data is laid out in memory.</p>
+<p>On the command line (but not in ICL files or comments), compiler settings can also be specified in Unix style. (New in 6.35.) This avoids the need to escape dollar signs.</p>
+<pre><code>--list
+--opt SETTING=number
+</code></pre>
+<p><strong>$ALLOC_CHUNK_SIZE</strong></p>
+<p>This controls the size of various miscellaneous memory pools in the Inform compiler. (Internal memory setting.)</p>
+<p><strong>$DICT_CHAR_SIZE</strong></p>
+<p>The byte size of one character in the dictionary. This is only meaningful in Glulx. It can be 1 (dictionary characters are one byte) or 4 (dictionary characters are four-byte words).</p>
+<p><strong>$DICT_WORD_SIZE</strong></p>
+<p>The number of bytes in a dictionary word entry. (In Z-code this is 6, representing up to 9 Z-characters, and cannot be changed.)</p>
+<p><strong>$GLULX_OBJECT_EXT_BYTES</strong></p>
+<p>The number of extra zero bytes to add to each object table entry. This is writable memory which the game can use freely. (This is only meaningful in Glulx, as the Z-code object format is fixed by the spec.)</p>
+<p><strong>$INDIV_PROP_START</strong></p>
+<p>The index number of the first individual property. This also determines the maximum number of common properties. (In Z-code this is 64 and cannot be changed.)</p>
+<p><strong>$MAX_ARRAYS</strong></p>
+<p>The maximum number of arrays in one compiled game. (Internal memory setting.)</p>
+<p><strong>$MAX_GLOBAL_VARIABLES</strong></p>
+<p>The maximum number of global variables in one compiled game. (Internal memory setting. In Z-code this is 240 and cannot be changed.)</p>
+<p><strong>$MAX_INCLUSION_DEPTH</strong></p>
+<p>The maximum number of nested <code>Include</code> directives in source files. (Internal memory setting.)</p>
+<p><strong>$MAX_LOCAL_VARIABLES</strong></p>
+<p>The maximum number of local variables in a routine. (Internal memory setting. In Z-code this is 16 and cannot be changed.)</p>
+<p><strong>$MAX_NUM_STATIC_STRINGS</strong></p>
+<p>The maximum number of compiled strings in one compiled game. (Internal memory setting. This is only meaningful in Glulx, as Z-code uses a different text layout scheme.)</p>
+<p><strong>$MAX_OBJ_PROP_COUNT</strong></p>
+<p>The maximum number of properties in one object's property table. (Internal memory setting. This is only meaningful in Glulx.)</p>
+<p><strong>$MAX_OBJ_PROP_TABLE_SIZE</strong></p>
+<p>The maximum number of words used by one object's property table. (Internal memory setting. This is only meaningful in Glulx.)</p>
+<p><strong>$MAX_SOURCE_FILES</strong></p>
+<p>The maximum number of source files in one compilation. (Internal memory setting.)</p>
+<p><strong>$MAX_STACK_SIZE</strong></p>
+<p>The amount of memory that the interpreter will reserve for the Glulx stack. (This is only meaningful in Glulx.)</p>
+<p><strong>$MAX_UNICODE_CHARS</strong></p>
+<p>The maximum number of unique non-ASCII characters in the game text. (Internal memory setting. This is only meaningful in Glulx, as Z-code uses a different text layout scheme.)</p>
+<p><strong>$MEMORY_MAP_EXTENSION</strong></p>
+<p>The number of extra zero bytes to add to the end of the compiled game file. This is writable memory which the game can use freely. (This is only meaningful in Glulx.)</p>
+<p><strong>$NUM_ATTR_BYTES</strong></p>
+<p>The number of bytes used for attribute flags in each object. The maximum number of attributes is <code>8 * NUM_ATTR_BYTES</code>. (In Glulx, this must be a multiple of 4 plus 3. In Z-code this is always 6 and cannot be changed.)</p>
+<p><strong>$OMIT_UNUSED_ROUTINES</strong></p>
+<p>If this is set to 1, the compiler will omit the compiled code of unused routines from the game file. (See <code>$WARN_UNUSED_ROUTINES</code>.)</p>
+<p><strong>$SERIAL</strong></p>
+<p>Sets the game's serial number to the given six-digit number. (The <code>Serial</code> directive does the same thing; see §38.)</p>
+<p><strong>$WARN_UNUSED_ROUTINES</strong></p>
+<p>If this is set to 2, the compiler will display a warning for each routine in the game file which is never called. (This includes routines called only from uncalled routines, etc.) If set to 1, it will warn only about functions in game code, not in library files.</p>
+<p><strong>$ZCODE_HEADER_EXT_WORDS</strong></p>
+<p>This sets the number of words in the Z-code header extension table. The default is 3. The <code>-W</code> setting does the same thing. (See Z-spec 1.0. This is only meaningful in Z-code.)</p>
+<p><strong>$ZCODE_HEADER_FLAGS_3</strong></p>
+<p>This is the value to store in the Flags 3 word of the header extension table. (See Z-spec 1.1. This is only meaningful in Z-code.)</p>
+<h1 id="language-changes">Language changes</h1>
+<p>A few elements of the Inform language itself have been updated or extended.</p>
+<h2 id="directives">Directives</h2>
+<p>A couple of notes on general directive syntax:</p>
+<p>Directives in Inform 6 are not case-sensitive. These declarations are equivalent:</p>
+<pre><code>Global varname;
+GLOBAL varname;
+global varname;
+</code></pre>
+<p>The DM4 does not state this, but it has been true in every version of the Inform compiler, so we can accept it as a principle of the language.</p>
+<p class="CommentPara"><span class="Comment">[The DM4 mostly shows directives in title case: <code>Global</code>, <code>Zcharacter</code>, <code>Ifdef</code>. This is the manual's code style, not a language requirement.]</span></p>
+<p class="CommentPara"><span class="Comment">[Variable names and symbols are also case-insensitive. Language keywords, such as <code>if</code> and <code>return</code>, are not; they must be given in lower case. Case is also significant for the built-in print tokens <code>(A)</code>, <code>(a)</code>, <code>(The)</code>, and <code>(the)</code>; see §26.]</span></p>
+<p>Directives can also be written with a <code>#</code> sign:</p>
+<pre><code>#Global varname;
+</code></pre>
+<p>For standalone directives, the <code>#</code> sign is optional. However, a few directives can be used within a routine or object definition. This allows conditional compilation of individual lines of code or object properties (§38). These directives are:</p>
+<pre><code>Ifdef, Ifndef, Ifnot, Ifv3, Ifv5, Iftrue, Iffalse, Endif
+</code></pre>
+<p>When one of these directives appears within a routine or object definition, the <code>#</code> sign is required.</p>
+<p class="CommentPara"><span class="Comment">[As of 6.35, the compiler will report errors for non-"if" directives appearing within a definition. In earlier versions, this error was not always checked.]</span></p>
+<p><strong>Array</strong></p>
+<p>The <code>Array</code> directive (§2.4) supports four ways to specify values:</p>
+<pre><code>Array arrname --&gt; N; 
+Array arrname --&gt; expr1 expr2 ... exprN; 
+Array arrname --&gt; [ expr1 expr2 ... exprN ]; 
+Array arrname --&gt; "string";
+</code></pre>
+<p>The third form, with square brackets, is not documented in the DM4, but it has been supported since 6.0. Expressions between the brackets may be delimited by optional semicolons.</p>
+<p class="CommentPara"><span class="Comment">[The bracket form allows us to define a one-entry array with an initializer: <code>Array arrname --&gt; [ expr ];</code> This would not otherwise be possible. Note that zero-entry arrays are not permitted.]</span></p>
+<p>The <code>Array</code> directive supports a new array type in 6.30:</p>
+<pre><code>Array arrname buffer N; 
+Array arrname buffer expr1 expr2 ... exprN; 
+Array arrname buffer [ expr1 expr2 ... exprN ]; 
+Array arrname buffer "string";
+</code></pre>
+<p>The <code>buffer</code> keyword defines <code>arrname</code> as a hybrid array, in which the first <em>word</em> <code>array--&gt;0</code> contains the length (N), and the following N <em>bytes</em> <code>array-&gt;WORDSIZE</code>, <code>array-&gt;(WORDSIZE+1)</code> ... <code>array-&gt;(WORDSIZE+N-1)</code> contain the specified expression values or string characters.</p>
+<p class="CommentPara"><span class="Comment">[This hybrid form is used by the <code>print_to_array</code> method (§3.12) and various library functions.]</span></p>
+<p>All forms of the <code>Array</code> directive support the <code>static</code> keyword, which is new in 6.34:</p>
+<pre><code>Array arrname static -&gt; 1 2 3 4;
+Array arrname static string "plugh";
+</code></pre>
+<p>The <code>static</code> keyword must appear before the array type (<code>-&gt;</code>, <code>--&gt;</code>, <code>string</code>, <code>table</code>, or <code>buffer</code>). It indicates that the array should be placed in non-writable memory.</p>
+<p class="CommentPara"><span class="Comment">[In Z-code, this places the array at the end of readable memory (after the dictionary and before the beginning of code storage). In Glulx, it places the array at the end of ROM (after string storage). A static array declaration should always provide initial values, since it cannot be updated at runtime. ]</span></p>
+<p><strong>Dictionary</strong></p>
+<p>The DM4 marked the <code>Dictionary</code> directive as obsolete (§Table5), but it has been reinstated as of 6.33. It allows you to add a word to the game dictionary and set its optional dictionary flags.</p>
+<pre><code>Dictionary 'word';
+Dictionary 'word' val1;
+Dictionary 'word' val1 val3;
+</code></pre>
+<p>The first form simply adds the word if it is not already in the dictionary. The second form also sets the <code>dict_par1</code> flag to the given value, or bitwise-or's the value to that flag if the word already exists. The third form also sets the <code>dict_par3</code> flag in the same way. </p>
+<p>The values can be numeric literals or constants. They can be 0-255 for Z-code, or 0-65535 for Glulx.</p>
+<p class="CommentPara"><span class="Comment">[<code>dict_par2</code> cannot be set by this directive. It is always the verb number, or zero for words that are not verbs.]</span></p>
+<p><strong>Ifv3</strong></p>
+<p>This is mentioned in the DM4 as being for compiler maintenance only (§Table5). In fact it is used by the library, so it's worth documenting. This is a conditional compilation directive, like <code>Iftrue</code>, which compiles code when building Z-code V3 (only). It is equivalent to:</p>
+<pre><code>#Ifdef TARGET_ZCODE;
+#Iftrue (#version_number == 3);
+! ...code...
+#Endif;
+#Endif;
+</code></pre>
+<p><strong>Ifv5</strong></p>
+<p>This misnamed directive is also used by the library (§Table5). It conditionally compiles code when building Z-code V4 and later <em>or</em> Glulx. Thus it is the converse of <code>Ifv3</code>. (The name is left over from much earlier versions of Inform.)</p>
+<p><strong>Origsource</strong></p>
+<p>The <code>Origsource</code> directive allows you to mark part of a source file as having been generated from another file. (E.g, an Inform 7 source file.) This directive is new in 6.34.</p>
+<pre><code>Origsource "Filename";
+Origsource "Filename" 10;
+Origsource "Filename" 10 40;
+Origsource
+</code></pre>
+<p>This declares that all following lines are derived from the given filename. This will be reported in error messages and debug output. You may optionally provide a line number and a character number within the line (10 and 40, in these examples).</p>
+<p>The declaration holds through the next <code>Origsource</code> directive (but does not apply to included files). The fourth form, with no arguments, clears the declaration. </p>
+<p><strong>Replace</strong></p>
+<p>The <code>Replace</code> directive (§25) allows you to redefine a function which has already been defined (such as in a library or in the veneer).</p>
+<p class="CommentPara"><span class="Comment">[The DM4 says that you can only replace functions in files marked with the <code>System_file</code> directive. This limitation has been removed.]</span></p>
+<p>The <code>Replace</code> directive has two forms, of which the second is new in 6.33:</p>
+<pre><code>Replace Func;
+Replace Func OriginalFunc;
+</code></pre>
+<p>Multiple definitions of <code>Func()</code> may follow the <code>Replace</code> directive. <code>Func</code> will refer to the last-defined version, except that definitions in normal files are preferred over definitions in <code>System_file</code> files or the veneer. With the second form, <code>OriginalFunc</code> will refer to the <em>first</em>-defined version of the function.</p>
+<p><strong>Undef</strong></p>
+<p>The <code>Undef</code> directive allows you to remove a previously-defined constant. This directive is new in 6.33.</p>
+<pre><code>Undef Const;
+</code></pre>
+<p>This leaves the <code>Const</code> symbol undefined. If <code>Const</code> was never defined, this does nothing.</p>
+<h2 id="statements">Statements</h2>
+<p>The action statements <code>&lt;Action&gt;</code> and <code>&lt;&lt;Action&gt;&gt;</code> (§6) now support up to four arguments. The four-argument form is new as of 6.33.</p>
+<pre><code>&lt;Action&gt;
+&lt;Action Noun&gt;
+&lt;Action Noun Second&gt;
+&lt;Action Noun Second, Actor&gt;
+</code></pre>
+<p>All provided arguments are passed to the <code>R_Process()</code> veneer function.</p>
+<p class="CommentPara"><span class="Comment">[As in previous version of Inform, the Action argument can either be a bare action name or a parenthesized expression which produces an action value. Thus, <code>&lt;Take lamp&gt;</code> and <code>&lt;(##Take) lamp&gt;</code> are equivalent.]</span></p>
+<p class="CommentPara"><span class="Comment">[This statement does not follow the traditional IF command syntax, which would put the actor first: "ACTOR, ACTION NOUN". Inform's lexer is not able to handle that ordering consistently, so the statement has to put the actor last.]</span></p>
+<p>The capitalized <code>(A)</code> print token joins <code>(a)</code>, <code>(The)</code>, and <code>(the)</code> as of 6.30; see §26.</p>
+<pre><code>print (A) lamp;
+</code></pre>
+<p>This calls the <code>CInDefArt()</code> veneer function.</p>
+<h2 id="operators">Operators</h2>
+<p>The table of condition operators (§Table1B) shows <code>&amp;&amp;</code>, <code>||</code>, and <code>~~</code> as having equal precedence. This is ambiguous about expressions like <code>(~~X &amp;&amp; Y)</code>. In fact, the compiler has always (at least since 6.0) parsed this as applying <code>~~</code> to the conjunction <code>(X &amp;&amp; Y)</code>:</p>
+<pre><code>! These statements are equivalent:
+val = ~~X &amp;&amp; Y;
+val = ~~(X &amp;&amp; Y);
+</code></pre>
+<p>If you want the <code>~~</code> to apply only to <code>X</code>, you must add explicit parentheses:</p>
+<pre><code>! Not equivalent to the above!
+val = (~~X) &amp;&amp; Y;
+</code></pre>
+<p>Similarly, the bitwise expression <code>(~X &amp; Y)</code> is parsed as <code>(~(X &amp; Y))</code>.</p>
+<p>Given this, it makes sense to consider the logical <code>~~</code> operator as having a precedence level of 1.5, and the bitwise <code>~</code> operator as having a precedence level of 5.5.</p>
+<h2 id="class-behavior">Class behavior</h2>
+<p>The DM4 (§3.8) gives this example of multiple inheritance:</p>
+<pre><code>Object "goose that lays the golden eggs"
+    class Bird Treasure;`
+</code></pre>
+<blockquote>
+<p>[This goose] inherits from Object first and then Bird and then Treasure, attribute settings and property values from later-mentioned classes overriding earlier ones, so if these classes should give contradictory instructions then Treasure gets the last word.</p>
+</blockquote>
+<p>In fact this is not true (and never has been). The language behavior is somewhat complex.</p>
+<p>Property values are determined by the <em>first</em> class listed, whether that is given as a directive (<code>Treasure goose</code>) or a <code>class</code> keyword (<code>Object goose class Treasure</code>). Of course, if the object itself gives a property value, that overrides all inherited values.</p>
+<p>If one class inherits from another, the derived class property overrides the superclass property, as one would expect.</p>
+<p><em>Additive</em> properties follow the same logic, but their values accumulate, rather than overriding each other. An additive property gains values from the object's own definition (first), then from each class in (forward) listing order.</p>
+<p class="CommentPara"><span class="Comment">[This supports the I6 library convention that additive properties (<code>before</code>, <code>after</code>, <code>life</code>) contain lists of inline routines. These are tested in forward order; each routine may return <code>true</code> to indicate that the event is handled, or <code>false</code> to pass control to the next routine. The precedence order is thus, again, the object followed by each class in listing order.]</span></p>
+<p>Attributes follow the same rule, except that <em>classes cannot negate attributes set by other classes</em>.</p>
+<pre><code>Class Bird has ~heavy;
+Class Treasure has heavy;
+Object goose class Bird Treasure;
+</code></pre>
+<p>In this example, the goose object gains the <code>heavy</code> attribute because at least one of its classes sets it. This will be true no matter what order the classes are listed in. The <code>has ~heavy</code> declaration in class <code>Bird</code> has no effect.</p>
+<p>Objects can of course use <code>has ~attr</code> to negate attributes inherited from classes. Derived classes can negate attributes inherited from superclasses. The limitation applies only to conflicts between an object's classes.</p>
+<p class="CommentPara"><span class="Comment">[This is arguably a compiler bug, but it has been established behavior since Inform 6.0, so it may not be practical to change it.]</span></p>
+<h2 id="glulx-support">Glulx support</h2>
+<p>The ability to compile a Glulx game file (the <code>-G</code> option) was introduced in 6.30. This came with a few additions to the Inform language.</p>
+<p>One of the constants <code>TARGET_ZCODE</code> and <code>TARGET_GLULX</code> is always defined. These can be used with the <code>Ifdef</code> directive to mark code that should only be compiled on one platform.</p>
+<p>The constant <code>WORDSIZE</code> is always defined; it is 2 in Z-code and 4 in Glulx.</p>
+<p>As noted above, code under the <code>Ifv5</code> directive is also compiled for Glulx.</p>
+<h3 id="language-features-supported-only-in-glulx">Language features supported only in Glulx</h3>
+<p>If the first argument to a function is named <code>_vararg_count</code>, arguments will be passed on the VM stack, with <code>_vararg_count</code> set to the number of arguments.</p>
+<p>Literals beginning with <code>$+</code> and <code>$-</code> are compiled as floating-point constants. For example: <code>$+1.0</code>, <code>$-1e3</code>, <code>$+2.5e-3</code>. The constants <code>FLOAT_INFINITY</code>, <code>FLOAT_NINFINITY</code>, <code>FLOAT_NAN</code> are also defined.</p>
+<p class="CommentPara"><span class="Comment">[Note that the standard Inform arithmetic operators (<code>+</code>, <code>-</code>, etc) do not work with floating-point values. You must use Glulx opcodes (<code>@fadd</code>, <code>@fsub</code>, etc).]</span></p>
+<p>The <code>print_to_array()</code> method (§3.12) requires two arguments, rather than one (as in Z-code).</p>
+<h3 id="language-features-not-supported-in-glulx">Language features not supported in Glulx</h3>
+<p>Module compilation (the <code>-M</code> option, §38) and Infix (the <code>-X</code> option, §7) are not available.</p>
+<p>The <code>Zcharacter</code> directive (§36) is not available, since Glulx does not use the ZSCII character set.</p>
+<p>The <code>save</code>, <code>restore</code>, and <code>read</code> statements (§1.15, §2.5) are not available. These features require more complex behavior in Glulx and cannot be encapsulated in a single statement. They must be implemented in library code using the <code>@glk</code> opcode.</p>
+<h2 id="z-machine-v34-limitations">Z-machine V3/4 limitations</h2>
+<p>Early releases of Inform (through Inform 5) were designed to support all versions of the Z-machine from 3 through 6. However, Inform 6 extended the language in ways which require more advanced VM support. Therefore, certain language features require Z-machine version 5 or later.</p>
+<ul>
+<li>Debug mode and strict mode (<code>-D</code> and <code>-S</code>, §7) are not available in V3 and V4.</li>
+<li>The method call expression <code>obj.prop()</code> is not available in V3 and V4.</li>
+</ul>
+<p>You can work around the lack of <code>obj.prop()</code> by writing:</p>
+<pre><code>addr = obj.prop;
+addr();
+</code></pre>
+<p>In general, Inform 6 is able to compile older source code to V3 if the source <em>and the library</em> avoids the <code>obj.prop()</code> syntax. This means you cannot use the Inform 6 library. You must use the <a href="https://ifarchive.org/indexes/if-archive/infocom/compilers/inform5/library/">Inform 5 library</a>, or one of the alternative libraries designed for V3, such as <a href="https://github.com/ByteProject/Metrocenter84/tree/master/metro84">metro84</a> or <a href="https://github.com/johanberntsson/PunyInform">PunyInform</a>.</p>
+<p class="CommentPara"><span class="Comment">[It is possible to re-implement a limited version of <code>obj.prop()</code> for V3 by replacing the <code>CA__Pr</code> and <code>Cl__Ms</code> veneer routines. Some alternative libraries do this.]</span></p>
+<h1 id="bugs">Bugs</h1>
+<p>A great number of bugs have been fixed since Inform 6.21. The list is not included here. See the <a href="https://ifarchive.org/if-archive/infocom/compilers/inform6/ReleaseNotes.html">Release Notes</a> for details.</p>
+<p>Particular thanks to Daniel Fremont for the many bug reports uncovered by his input-fuzzing project.</p>
+
+
+</body></html>
