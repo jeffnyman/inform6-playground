@@ -20,9 +20,9 @@ If you clone this repository, it's set up to ignore a `project` or `projects` di
 ];
 ```
 
-If that code is stored in a file called `learn.t`, then you could then compile that with:
+If that code is stored in a file called `learn.inf`, then you could then compile that with:
 
-`inform6 learn.t`
+`inform6 learn.inf`
 
 Let's say that you have a program that uses the Inform 6 library. Consider this:
 
@@ -40,7 +40,7 @@ Include "VerbLib";
 Include "Grammar";
 ```
 
-If that code is stored in a file called `ruins.t`, then you could compile that with:
+If that code is stored in a file called `ruins.inf`, then you could compile that with:
 
 `inform6 ruins.inf +include_path=../lib/`
 
