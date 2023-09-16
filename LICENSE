@@ -1,0 +1,5 @@
+This repository provides redistributable materials related to Inform 6 to facilitate its use. Inform 6 itself is distributed under its own license, and the terms and conditions of that license apply to the Inform 6 software and any associated materials provided here.
+
+In terms of licensing for what the repository _does_ contain, Inform 6 is "freeware" in the broad sense. This means that it's copyrighted software distributed for use free of charge but subject to certain restrictions. The main thing to understand is that any of the Inform-specific elements in this repository retain their copyright to Graham Nelson who developed the system.
+
+You can see the [COPYING](https://github.com/jeffnyman/inform6-playground/blob/main/lib/COPYING) document in the Inform 6 library as well, which does a good job of spelling everything out. You can review the license of Inform 6 to understand your rights and obligations when using the software and materials in this repository.
