@@ -12,6 +12,15 @@ The Inform 6 source is currently distributed at [Inform6](https://github.com/Dav
 
 Beyond being distributed at the above links, all of the Inform 6 ecosystem is available within the ["inform6"](https://ifarchive.org/indexes/if-archive/infocom/compilers/inform6/) area of the if-archive.
 
+## Documentation
+
+Inform 6 has a series of documentation reference points.
+
+- [The Inform Designer's Manual v4](https://www.inform-fiction.org/manual/html/index.html) (HTML)
+- [The Inform Designer's Manual v4](https://www.inform-fiction.org/manual/DM4.pdf) (PDF)
+- [The Inform Beginner's Guide](https://www.inform-fiction.org/manual/IBG.pdf) (PDF)
+- [PunyInform documentation](https://github.com/johanberntsson/PunyInform/tree/master/documentation)
+
 ## Usage
 
 If you clone this repository, it's set up to ignore a `project` or `projects` directory. You can set the location of the provided Inform 6 executable on your system path. A simple Inform 6 example would be this:
