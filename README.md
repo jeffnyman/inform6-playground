@@ -6,6 +6,8 @@ This repository contains a simplified distribution of [Inform 6](https://www.inf
 
 The Inform 6 library is currently distributed at [inform6lib](https://gitlab.com/DavidGriffith/inform6lib). This repository includes version 6.12.6 of the library.
 
+The Puny Inform library is currently distributed at [PunyInform](https://github.com/johanberntsson/PunyInform). This repository includes version 5.1 of the library.
+
 The Inform 6 source is currently distributed at [Inform6](https://github.com/DavidKinder/Inform6). This repository includes version 6.41 of Inform.
 
 Beyond being distributed at the above links, all of the Inform 6 ecosystem is available within the ["inform6"](https://ifarchive.org/indexes/if-archive/infocom/compilers/inform6/) area of the if-archive.
@@ -51,3 +53,29 @@ With Inform 6, you can also provide what are called "ICL commands" within the so
 ```
 
 Keep in mind that if you place your project in a subdirectory within your projects directory, you will have to adjust the relative paths accordingly. The idea, however, is that everything is done relative to the Inform 6 playground structure.
+
+### Using PunyInform
+
+To use PunyInform, you can just point to the `lib-puny` library. So your source code would look like this:
+
+```inform6
+!% +include_path=../lib-puny
+!% -v3
+
+Constant Story "Minimal";
+Constant Headline "^A sample game using PunyInform.^";
+
+Constant INITIAL_LOCATION_VALUE = library;
+
+Include "globals.h";
+Include "puny.h";
+
+Object library "The Library"
+with
+  description "You are in a library."
+;
+
+[ Initialise;
+  print "^^The story begins ...^^";
+];
+```
